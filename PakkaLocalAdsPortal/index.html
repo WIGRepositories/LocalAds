@@ -1,0 +1,548 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="myApp" ng-controller="myCtrl">
+<head>
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>PAKKA LOCAL ADS</title>
+
+    <meta name="keywords" content="PAKKA LOCAL ADS,LOCAL ADS, ADS,PAKKA," />
+    <meta name="description" content="PAKKA LOCAL ADS">
+    <meta name="author" content="PAKKA LOCAL ADS">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="ui/img/localads/logo-1.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="ui/img/localads/logo-1.png">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- Web Fonts  -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CRoboto+Slab:300,400,700" rel="stylesheet" type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="ui/vendors/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="ui/vendors/font-awesome/css/font-awesome.min.css">
+   
+    <link rel="stylesheet" href="ui/vendors/simple-line-icons/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="ui/vendors/owl.carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="ui/vendors/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="ui/vendors/magnific-popup/magnific-popup.min.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="UI/css/theme.css">
+    <link rel="stylesheet" href="UI/css/theme-elements.css">
+    <link rel="stylesheet" href="UI/css/theme-blog.css">
+    <link rel="stylesheet" href="UI/css/theme-shop.css">
+
+    <!-- Current Page CSS -->
+    <link rel="stylesheet" href="ui/vendors/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="ui/vendors/rs-plugin/css/layers.css">
+    <link rel="stylesheet" href="ui/vendors/rs-plugin/css/navigation.css">
+
+    <!-- Skin CSS -->
+    <link rel="stylesheet" href="UI/css/skins/skin-photography.css">
+
+    <!-- Demo CSS -->
+    <link rel="stylesheet" href="UI/css/demos/demo-photography.css">
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet" href="UI/css/custom.css">
+
+    <!-- Head Libs -->
+    <script src="ui/vendors/modernizr/modernizr.min.js"></script>
+
+    <style>
+        .bc {
+            background-color: black;
+            color: white;
+            height: 35px;
+        }
+
+        .product_view .modal-dialog {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .pre-cost {
+            text-decoration: line-through;
+            color: #a5a5a5;
+        }
+
+        .space-ten {
+            padding: 10px 0;
+        }
+
+        top-nav {
+            width: 100%;
+            font-family: tahoma,Helvetica, Sans-Serif;
+        }
+    </style>
+</head>
+<body class="loading-overlay-showing" ng-init="getLocations();">
+
+
+    <div class="body">
+        <header id="header" class="header-narrow header-full-width" data-plugin-options='{"stickyEnabled": true, "stickyEnableOnBoxed": true, "stickyEnableOnMobile": true, "stickyStartAt": 0, "stickySetTop": "0"}'>
+            <div class="header-body">
+                <div class="header-container container">
+                    <div class="header-row">
+                        <div class="header-column">
+                            <div class="header-logo">
+                                <a href="index2.html">
+                                    <img alt="Porto" width="320" height="90" src="ui/img/localads/header.png">
+                                </a>
+                            </div>
+                            <div class="header-logo"><img src="ui/img/localads/top/img.jpg" width="280" height="90" data-toggle="modal" data-target="#contest-winner"></div>
+                            <div class="header-logo"><img src="ui/img/localads/top/img.jpg" width="280" height="90" data-toggle="modal" data-target="#contest-winner"></div>
+                            <div class="header-logo"><img src="ui/img/localads/top/img.jpg" width="280" height="90" data-toggle="modal" data-target="#contest-winner"></div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+                <div style="margin-bottom:-30px;">
+                    <nav class="top-nav  navbar navbar-default ">
+                        <ul class="nav navbar-nav container" id="mainNav">
+
+                            <li class="dropdown-full-color dropdown-primary">
+                                <a href="index2.html">
+                                    Home
+                                </a>
+                            </li>
+                            <li class="dropdown-full-color dropdown-primary">
+                                <a href="contact-me.html">
+                                    Contact
+                                </a>
+                            </li>
+
+                            <!--<li class="dropdown">
+                                <a  data-toggle="dropdown" href="#">
+                                    Contact
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="contact-me.html">Contact Me</a></li>
+
+                                </ul>
+                                </li>-->
+                            <li class="dropdown-full-color dropdown-primary">
+                                <a href="about-us.html">
+                                    About us
+                                </a>
+                            </li>
+                            <li class="dropdown-full-color dropdown-primary">
+                                <a href="archive.html">
+                                    Archive
+                                </a>
+                            </li>
+
+
+                            <li style="padding-top:10px">
+
+                                <select ng-options="l.name for l in Location track by l.id" ng-model="loc" ng-change="GetLocationImages(locid)">
+                                    <option value="">--Select Area--</option>
+
+                                </select>
+                            </li>
+
+                            <ul class="header-social-icons social-icons hidden-xs navbar-right">
+                                <li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                <li class="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                <li class="social-icons-instagram"><a href="http://www.instagram.com/" target="_blank" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+                            </ul>
+                        </ul>
+
+
+                    </nav>
+                </div>
+            </div>
+
+        </header>
+        <!--<button type="button" class="btn btn-xs" style="margin-top:20px;margin-left:300px;margin-bottom:-20px;">&#x2190;</button>
+        <button type="button" class="btn btn-xs" style="margin-top:20px;margin-left: 550px;margin-bottom:-20px;">&#x2192;</button>-->
+       
+        <div style="margin-top:0px;margin-left:18px;margin-right:10px;">
+
+            <div class="col-md-2 well" style="text-align:center;margin-top:10px;">
+
+                <ul class="col-md-2 list-unstyled "  style="margin-top:15px;width:auto;">
+                    <li class="" ng-repeat="img in parentImgs" style="margin-bottom:10px">
+
+                        <img src="{{img.FileContent}}" alt="" style="height:120px" ng-click="getImagePreview(img.Id)">
+
+                    </li>
+
+                </ul>
+            </div>
+            <div class="col-md-8 well" style="margin-top:10px">
+
+
+                <ul class="list-group affixed-element-top  js-affixed-element-top list-unstyled">
+                    <li><img id="imgPreview" src="" style="height:600px;width:800px" ng-click="GetChildImgPreview($event)" /></li>
+                </ul>
+                <section >
+                    <div class="tp-leftarrow tparrows default " style="top: 50%; transform: matrix(1, 0, 0, 1, 20, -20); left: -20px;"></div>
+                    <div class="tp-rightarrow tparrows default  " style="top: 50%; transform: matrix(1, 0, 0, 1, -60, -20); left: 100%;"></div>
+                </section>
+                     </div>
+
+
+            <div class="col-md-2 well" style="text-align:center;margin-top:10px;">
+                <ul class="list-unstyled" style="margin-top: 15px; text-align: center">
+
+                    <button class=""><img src="ui/img/localads/logo-1.png" alt="" style="height:60px;margin-bottom:10px" data-toggle="modal" data-target="#contest"><a href="winners.html"><img src="ui/img/localads/win.jpg" alt="" style="height:60px; width:80px; padding-left:15px"></a></button>
+
+
+
+
+                    <li class="" style="margin-bottom:10px;margin-top:10px;"><img src="ui/img/localads/right%20side/right-side-1.jpg" alt="" style="height: 120px; width: 150px;" data-toggle="modal" data-target="#right-side-1"></li>
+                    <li class="" style="margin-bottom:10px"><img src="ui/img/localads/right%20side/right-side-2.jpg" alt="" style="height: 120px; width: 150px;" data-toggle="modal" data-target="#right-side-2"></li>
+                    <li class="" style="margin-bottom:10px"><img src="ui/img/localads/right%20side/right-side-3.jpg" alt="" style="height: 120px; width: 150px;" data-toggle="modal" data-target="#right-side-3"></li>
+                    <li class="" style="margin-bottom:10px"><img src="ui/img/localads/right%20side/right-side-4.jpg" alt="" style="height: 120px; width: 150px;" data-toggle="modal" data-target="#right-side-4"></li>
+                </ul>
+            </div>
+            <div class="col-md-12 well">
+                <div class="col-md-3 "><img src="ui/img/localads/bottom/bottom-1.jpg" style="height:120px;width:280px;" data-toggle="modal" data-target="#bottom-1"></div>
+                <div class="col-md-3 "><img src="ui/img/localads/bottom/bottom-2.jpg" style="height: 120px;width:280px;" data-toggle="modal" data-target="#bottom-2"></div>
+                <div class="col-md-3 "><img src="ui/img/localads/bottom/bottom-3.jpg" style="height:120px;width:280px;" data-toggle="modal" data-target="#bottom-3"></div>
+                <div class="col-md-3 "><img src="ui/img/localads/bottom/bottom-4.jpg" style="height:120px;width:280px;" data-toggle="modal" data-target="#bottom-4"></div>
+            </div>
+        </div>
+
+
+        <footer id="footer" class="light narrow">
+            <div class="footer-copyright">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12 center">
+                            <p><strong class="text-uppercase">pakka local ads</strong> - &copy; Copyright 2017 - All Rights Reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <div class="modal fade product_view" id="contest">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+                    <h3 class="modal-title">Contest</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 product_img">
+                            <img src="ui/img/localads/logo-1.png" class="img-responsive">
+                            <img src="ui/img/localads/money.jpg" class="img-responsive">
+                        </div>
+                        <div class="col-md-6 product_content">
+                            <h4>Contest Id: <span>51526</span></h4>
+                            <div class="form-group">
+                                <label for="usr">Name:</label>
+                                <input type="text" class="form-control" id="usr">
+                            </div>
+                            <div class="form-group">
+                                <label for="usr">Email Id:</label>
+                                <input type="text" class="form-control" id="usr">
+                            </div>
+                            <div class="form-group">
+                                <label for="usr">Mobile Number*:</label>
+                                <input type="number" class="form-control" id="usr">
+                            </div>
+                            <div class="form-group">
+                                <label for="usr">Location:</label>
+                                <select ng-options="q.name for q in Location track by q.id" ng-model="loc1" ng-change="GetLocationquestion(locationid)">
+                                    <option value="">--Select Area--</option>
+
+                                </select>
+                            </div>
+
+
+                            <div class="form-group">
+                               
+                                    <!--{{l.question}}-->
+                              
+                                
+                                      <!--<label class="checkbox-inline radio" ng-hide="l.option1 == null" ng-init="answer=-1">
+                                   <input type="radio" value="{{l.option1}}" name="optradio" ng-model="answer">{{l.option1}}                                       
+                                    </label>
+                                      <label class="checkbox-inline radio" ng-hide="l.option2 == null">
+                                          <input type="radio" value="{{l.option1}}" name="optradio" ng-model="answer">{{l.option2}}
+                                      </label>
+                                      <label class="checkbox-inline radio" ng-hide="l.option3 == null">
+                                          <input type="radio" value="{{l.option1}}" name="optradio" ng-model="answer">{{l.option3}}
+                                      </label>
+                                      <label class="checkbox-inline radio" ng-hide="l.option4 == null">
+                                          <input type="radio" value="{{l.option1}}" name="optradio" ng-model="answer">{{l.option4}}
+                                      </label>-->
+                               Choose one of the answer below
+                                <br />
+                                <label>
+                                    <input type="radio" ng-model="color" value="red">
+                                    Red
+                                </label><br />
+                                <label>
+                                    <input type="radio" ng-model="color" value="green">
+                                    Green
+                                </label><br />
+                                <label>
+                                    <input type="radio" ng-model="color" value="blue">
+                                    Blue
+                                </label><br />
+                                <label>
+                                    <input type="radio" ng-model="color" value="yellow">
+                                    yellow
+                                </label><br />
+                            </div>
+
+
+                            <div class="btn-ground">
+
+                                <button type="button" class="btn btn-primary" ng-click="SubmitAnswers()"> submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade product_view" id="contest-winner">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <div class="row">
+                        <a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+                        <div class="col-md-12 product_img">
+
+                            <img src="ui/img/localads/top/img.jpg" class="img-responsive">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade product_view" id="right-side-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <div class="row">
+                        <a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+                        <div class="col-md-12 product_img">
+
+                            <img src="ui/img/localads/right%20side/right-side-1.jpg" class="img-responsive">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade product_view" id="right-side-2">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <div class="row">
+                        <a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+                        <div class="col-md-12 product_img">
+
+                            <img src="ui/img/localads/right%20side/right-side-2.jpg" class="img-responsive">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade product_view" id="right-side-3">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <div class="row">
+                        <a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+                        <div class="col-md-12 product_img">
+
+                            <img src="ui/img/localads/right%20side/right-side-3.jpg" class="img-responsive">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade product_view" id="right-side-4">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <div class="row">
+                        <a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+                        <div class="col-md-6 product_img">
+
+                            <img src="ui/img/localads/right%20side/right-side-4.jpg" class="img-responsive">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade product_view" id="bottom-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <div class="row">
+                        <a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+                        <div class="col-md-12 product_img">
+
+                            <img src="ui/img/localads/bottom/bottom-1.jpg" class="img-responsive">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade product_view" id="bottom-2">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <div class="row">
+                        <a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+                        <div class="col-md-12 product_img">
+
+                            <img src="ui/img/localads/bottom/bottom-2.jpg" class="img-responsive">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade product_view" id="bottom-3">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <div class="row">
+                        <a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+                        <div class="col-md-12 product_img">
+
+                            <img src="ui/img/localads/bottom/bottom-3.jpg" class="img-responsive">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade product_view" id="bottom-4">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <div class="row">
+                        <a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+                        <div class="col-md-12 product_img">
+
+                            <img src="ui/img/localads/bottom/bottom-4.jpg" class="img-responsive">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+    <!-- Vendor -->
+    <script src="ui/vendors/jquery/jquery.min.js"></script>
+    <script src="ui/vendors/jquery.appear/jquery.appear.min.js"></script>
+    <script src="ui/vendors/jquery.easing/jquery.easing.min.js"></script>
+    <script src="ui/vendors/jquery-cookie/jquery-cookie.min.js"></script>
+    <script src="ui/vendors/bootstrap/js/bootstrap.min.js"></script>
+    <script src="ui/vendors/common/common.min.js"></script>
+    <script src="ui/vendors/jquery.validation/jquery.validation.min.js"></script>
+    <script src="ui/vendors/jquery.easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
+    <script src="ui/vendors/jquery.gmap/jquery.gmap.min.js"></script>
+    <script src="ui/vendors/jquery.lazyload/jquery.lazyload.min.js"></script>
+    <script src="ui/vendors/isotope/jquery.isotope.min.js"></script>
+    <script src="ui/vendors/owl.carousel/owl.carousel.min.js"></script>
+    <script src="ui/vendors/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="ui/vendors/vide/vide.min.js"></script>
+    <script src="ui/vendors/jquery-mousewheel/jquery.mousewheel.min.js"></script>
+
+    <!-- Theme Base, Components and Settings -->
+    <script src="UI/js/theme.js"></script>
+
+    <!-- Current Page Vendor and Views -->
+    <script src="ui/vendors/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+    <script src="ui/vendors/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+
+    <!-- Current Page Vendor and Views -->
+    <script src="UI/js/views/view.contact.js"></script>
+
+    <!-- Demo -->
+    <script src="UI/js/demos/demo-photography.js"></script>
+
+    <!-- Theme Custom -->
+    <script src="UI/js/custom.js"></script>
+
+    <!-- Theme Initialization Files -->
+    <script src="../UI/js/theme.init.js"></script>
+
+
+
+    <script language="JavaScript">
+        function getImagePreview() {
+            document.getElementById('imgPreview').src = "ui/img/localads/adv/page-1.png";
+        }
+
+        function getImagePreview1() {
+            document.getElementById('imgPreview').src = "ui/img/localads/adv/page-2.png";
+        }
+
+        function getImagePreview2() {
+            document.getElementById('imgPreview').src = "ui/img/localads/adv/page-3.jpg";
+        }
+
+        function getImagePreview3() {
+            document.getElementById('imgPreview').src = "ui/img/localads/adv/page-4.png";
+        }
+
+
+    </script>
+
+    <script src="UI/js/angular.js"></script>
+    <script src="UI/js/ui-bootstrap-tpls-1.3.3.js"></script>
+    <script src="UI/js/ngStorage.js"></script>
+    <script src="UI/js/fileupload/angular-file-upload.js"></script>
+    <script src="UI/js/fileupload/angular-file-upload-shim.js"></script>
+    <script src="UI/js/index.js"></script>
+    <script src="UI/js/fileupload/Upload.js"></script>
+
+    <!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information.
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-12345678-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+     -->
+
+
+</body>
+
+</html>
+

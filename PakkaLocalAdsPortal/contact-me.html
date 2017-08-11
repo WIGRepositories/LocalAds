@@ -60,6 +60,41 @@
             color: white;
             height: 35px;
         }
+        .product_view .modal-dialog {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .product_view1 .modal-dialog {
+            max-width: 300px;
+            width: 100%;
+        }
+
+        .pre-cost {
+            text-decoration: line-through;
+            color: #a5a5a5;
+        }
+
+        .space-ten {
+            padding: 10px 0;
+        }
+
+        top-nav {
+            width: 100%;
+            font-family: tahoma,Helvetica, Sans-Serif;
+        }
+
+        .close-mark {
+            float: right !important;
+            margin-right: 15px;
+            margin-top: -10px;
+        }
+
+        .close-mark1 {
+            float: right !important;
+            margin-right: 10px;
+            margin-top: -15px;
+        }
     </style>
 </head>
 
@@ -79,13 +114,13 @@
                     <div class="header-row">
                         <div class="header-column">
                             <div class="header-logo">
-                                <a href="index2.html">
+                                <a href="index.html">
                                     <img alt="Porto" width="320" height="90" src="ui/img/localads/header.png">
                                 </a>
                             </div>
-                            <div class="header-logo"><img src="ui/img/localads/top/img.jpg" width="280" height="90" data-toggle="modal" data-target="#contest-winner"></div>
-                            <div class="header-logo"><img src="ui/img/localads/top/img.jpg" width="280" height="90" data-toggle="modal" data-target="#contest-winner"></div>
-                            <div class="header-logo"><img src="ui/img/localads/top/img.jpg" width="280" height="90" data-toggle="modal" data-target="#contest-winner"></div>
+                            <div class="header-logo"><img src="ui/img/localads/top/img.jpg" width="350" height="90" data-toggle="modal" data-target="#contest-winner"></div>
+                            <div class="header-logo"><img src="ui/img/localads/top/img.jpg" width="350" height="90" data-toggle="modal" data-target="#contest-winner"></div>
+                            <div class="header-logo"><img src="ui/img/localads/top/img.jpg" width="300" height="90" data-toggle="modal" data-target="#contest-winner"></div>
 
                         </div>
 
@@ -97,7 +132,7 @@
                         <ul class="nav navbar-nav container" id="mainNav">
 
                             <li class="dropdown-full-color dropdown-primary">
-                                <a href="index2.html">
+                                <a href="index.html">
                                     Home
                                 </a>
                             </li>
@@ -256,6 +291,23 @@
             </footer>
         </div>
         <div class="modal fade product_view" id="contest-winner">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <div class="row">
+                    <a href="#" data-dismiss="modal" class="class close-mark"><span class="glyphicon glyphicon-remove-circle"></span></a>
+                    <div class="col-md-12 product_img">
+
+                        <img src="ui/img/localads/top/img.jpg" class="img-responsive">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <!--<div class="modal fade product_view" id="contest-winner">
             <div class="modal-dialog">
                 <div class="modal-content">
 
@@ -270,7 +322,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- Vendor -->
         <script src="ui/vendors/jquery/jquery.min.js"></script>
         <script src="ui/vendors/jquery.appear/jquery.appear.min.js"></script>
